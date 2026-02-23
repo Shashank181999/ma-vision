@@ -1,0 +1,101 @@
+Category,Section,Title,Content,Additional Info
+COMPANY,Basic Info,Company Name,MA Vision Developments,
+COMPANY,Basic Info,Tagline,Building Excellence & Vision,
+COMPANY,Basic Info,Industry,Real Estate Development,UAE
+COMPANY,Basic Info,Founded,2001,
+COMPANY,Basic Info,Headquarters,Dubai,United Arab Emirates
+COMPANY,Basic Info,Website,mavdevelopments.com,
+
+ABOUT,Overview,Main Description,"MA VISION Developments is one of the UAE's leading homegrown professional development firms, built on a foundation of excellence, trust, and vision.",
+ABOUT,Overview,Secondary Description,"We specialize in transformative projects that shape communities and elevate urban living across the Emirates.",
+ABOUT,Overview,Mission,"From concept to completion, we serve as a trusted partner offering deep sector expertise and end-to-end support for high-impact developments.",
+ABOUT,Expertise,Core Expertise,Full project lifecycle management,Site selection to completion
+ABOUT,Expertise,Specialization,Transformative real estate projects,Community shaping developments
+
+LEADERSHIP,Chairman,Name,Marwa Abdelaziz,
+LEADERSHIP,Chairman,Title,Chairman,
+LEADERSHIP,Chairman,Experience,20+ Years,Since 2001
+LEADERSHIP,Chairman,Education 1,Architectural Engineering,
+LEADERSHIP,Chairman,Education 2,Certified PMP,Project Management Professional
+LEADERSHIP,Chairman,Education 3,Master's in Project Management,
+LEADERSHIP,Chairman,Bio,"Seasoned expert and pioneer in the UAE's property development sector since 2001. Her experience spans the full project lifecycle—from site selection and feasibility analysis to financial modeling and master planning.",
+LEADERSHIP,Chairman,Achievement,AED 5B+ Development Value Delivered,
+
+STATISTICS,Company Stats,Development Value,AED 5B+,Total project value delivered
+STATISTICS,Company Stats,Years of Experience,20+,Since 2001
+STATISTICS,Company Stats,Projects Completed,50+,Across UAE
+
+SERVICES,Service 1,Title,Project Development,
+SERVICES,Service 1,Description,"End-to-end development services from concept to completion, delivering exceptional quality and value.",
+SERVICES,Service 1,Icon,◇,
+
+SERVICES,Service 2,Title,Project Management,
+SERVICES,Service 2,Description,"Professional oversight ensuring quality standards, timeline adherence, and budget optimization.",
+SERVICES,Service 2,Icon,◇,
+
+SERVICES,Service 3,Title,Cost Consultancy,
+SERVICES,Service 3,Description,"Financial analysis and cost management solutions for maximum return on investment.",
+SERVICES,Service 3,Icon,◇,
+
+SERVICES,Service 4,Title,Strategic Advisory,
+SERVICES,Service 4,Description,"High-level consultancy services tailored for investors, developers, and VIP clients.",
+SERVICES,Service 4,Icon,◇,
+
+EXPERTISE,Area 1,Title,Site Selection & Feasibility Analysis,Part of full project lifecycle,
+EXPERTISE,Area 2,Title,Financial Modeling & Investment Strategy,Part of full project lifecycle,
+EXPERTISE,Area 3,Title,Master Planning & Design Oversight,Part of full project lifecycle,
+EXPERTISE,Area 4,Title,Project Execution & Delivery,Part of full project lifecycle,
+
+PROJECTS,Project 1,Name,Skyline Residences,
+PROJECTS,Project 1,Category,Residential,
+PROJECTS,Project 1,Location,Dubai Marina,
+PROJECTS,Project 1,Description,Luxury high-rise apartments with panoramic city views,
+
+PROJECTS,Project 2,Name,Innovation Hub,
+PROJECTS,Project 2,Category,Commercial,
+PROJECTS,Project 2,Location,Business Bay,
+PROJECTS,Project 2,Description,Modern office complex designed for tomorrow's businesses,
+
+PROJECTS,Project 3,Name,Urban Square,
+PROJECTS,Project 3,Category,Mixed-Use,
+PROJECTS,Project 3,Location,Downtown Dubai,
+PROJECTS,Project 3,Description,"Integrated retail, residential, and entertainment destination",
+
+PROJECTS,Project 4,Name,Garden Villas,
+PROJECTS,Project 4,Category,Residential,
+PROJECTS,Project 4,Location,Emirates Hills,
+PROJECTS,Project 4,Description,Sustainable luxury homes surrounded by nature,
+
+PROJECTS,Project 5,Name,Tech Tower,
+PROJECTS,Project 5,Category,Commercial,
+PROJECTS,Project 5,Location,DIFC,
+PROJECTS,Project 5,Description,Smart building with cutting-edge infrastructure,
+
+PROJECTS,Project 6,Name,Grand Resort,
+PROJECTS,Project 6,Category,Hospitality,
+PROJECTS,Project 6,Location,Palm Jumeirah,
+PROJECTS,Project 6,Description,Five-star hospitality destination with world-class amenities,
+
+CONTACT,Office,Location,Dubai,United Arab Emirates
+CONTACT,Office,Email,info@mavision.ae,
+CONTACT,Office,Phone,+971 4 XXX XXXX,
+CONTACT,Office,Working Hours,Sun - Thu: 9:00 AM - 6:00 PM,
+
+BRANDING,Colors,Primary Color,#c9a962,Gold
+BRANDING,Colors,Primary Dark,#a88b4a,Dark Gold
+BRANDING,Colors,Background Dark,#0a0a0c,Near Black
+BRANDING,Colors,Secondary,#1a1a2e,Dark Blue
+BRANDING,Colors,Text Light,#ffffff,White
+BRANDING,Colors,Text Gray,#8b8b8b,Gray
+
+BRANDING,Typography,Primary Font,Poppins,Google Font
+BRANDING,Typography,Font Weights,"400, 500, 600, 700, 800",
+
+SOCIAL,Platform 1,Name,LinkedIn,
+SOCIAL,Platform 2,Name,Instagram,
+SOCIAL,Platform 3,Name,Twitter,
+SOCIAL,Platform 4,Name,Facebook,
+
+VALUES,Value 1,Title,Excellence,Foundation of company
+VALUES,Value 2,Title,Trust,Foundation of company
+VALUES,Value 3,Title,Vision,Foundation of company

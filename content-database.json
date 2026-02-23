@@ -1,0 +1,150 @@
+{
+  "company": {
+    "name": "MA Vision Developments",
+    "tagline": "Building Excellence & Vision",
+    "industry": "Real Estate Development",
+    "founded": "2001",
+    "headquarters": "Dubai, United Arab Emirates",
+    "website": "mavdevelopments.com"
+  },
+  "about": {
+    "main_description": "MA VISION Developments is one of the UAE's leading homegrown professional development firms, built on a foundation of excellence, trust, and vision.",
+    "secondary_description": "We specialize in transformative projects that shape communities and elevate urban living across the Emirates.",
+    "mission": "From concept to completion, we serve as a trusted partner offering deep sector expertise and end-to-end support for high-impact developments."
+  },
+  "statistics": {
+    "development_value": "AED 5B+",
+    "years_experience": "20+",
+    "projects_completed": "50+"
+  },
+  "leadership": [
+    {
+      "name": "Marwa Abdelaziz",
+      "title": "Chairman",
+      "experience_years": "20+",
+      "since": "2001",
+      "bio": "Seasoned expert and pioneer in the UAE's property development sector since 2001. Her experience spans the full project lifecycle—from site selection and feasibility analysis to financial modeling and master planning.",
+      "education": [
+        "Architectural Engineering",
+        "Certified PMP",
+        "Master's in Project Management"
+      ],
+      "achievements": [
+        "AED 5B+ Development Value Delivered"
+      ]
+    }
+  ],
+  "services": [
+    {
+      "id": 1,
+      "title": "Project Development",
+      "description": "End-to-end development services from concept to completion, delivering exceptional quality and value.",
+      "icon": "◇"
+    },
+    {
+      "id": 2,
+      "title": "Project Management",
+      "description": "Professional oversight ensuring quality standards, timeline adherence, and budget optimization.",
+      "icon": "◇"
+    },
+    {
+      "id": 3,
+      "title": "Cost Consultancy",
+      "description": "Financial analysis and cost management solutions for maximum return on investment.",
+      "icon": "◇"
+    },
+    {
+      "id": 4,
+      "title": "Strategic Advisory",
+      "description": "High-level consultancy services tailored for investors, developers, and VIP clients.",
+      "icon": "◇"
+    }
+  ],
+  "expertise_areas": [
+    "Site Selection & Feasibility Analysis",
+    "Financial Modeling & Investment Strategy",
+    "Master Planning & Design Oversight",
+    "Project Execution & Delivery"
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "name": "Skyline Residences",
+      "category": "Residential",
+      "location": "Dubai Marina",
+      "description": "Luxury high-rise apartments with panoramic city views",
+      "image": "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800"
+    },
+    {
+      "id": 2,
+      "name": "Innovation Hub",
+      "category": "Commercial",
+      "location": "Business Bay",
+      "description": "Modern office complex designed for tomorrow's businesses",
+      "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800"
+    },
+    {
+      "id": 3,
+      "name": "Urban Square",
+      "category": "Mixed-Use",
+      "location": "Downtown Dubai",
+      "description": "Integrated retail, residential, and entertainment destination",
+      "image": "https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800"
+    },
+    {
+      "id": 4,
+      "name": "Garden Villas",
+      "category": "Residential",
+      "location": "Emirates Hills",
+      "description": "Sustainable luxury homes surrounded by nature",
+      "image": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800"
+    },
+    {
+      "id": 5,
+      "name": "Tech Tower",
+      "category": "Commercial",
+      "location": "DIFC",
+      "description": "Smart building with cutting-edge infrastructure",
+      "image": "https://images.unsplash.com/photo-1554435493-93422e8220c8?w=800"
+    },
+    {
+      "id": 6,
+      "name": "Grand Resort",
+      "category": "Hospitality",
+      "location": "Palm Jumeirah",
+      "description": "Five-star hospitality destination with world-class amenities",
+      "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800"
+    }
+  ],
+  "contact": {
+    "location": "Dubai, United Arab Emirates",
+    "email": "info@mavision.ae",
+    "phone": "+971 4 XXX XXXX",
+    "working_hours": "Sun - Thu: 9:00 AM - 6:00 PM"
+  },
+  "branding": {
+    "colors": {
+      "primary": "#c9a962",
+      "primary_dark": "#a88b4a",
+      "background_dark": "#0a0a0c",
+      "secondary": "#1a1a2e",
+      "text_light": "#ffffff",
+      "text_gray": "#8b8b8b"
+    },
+    "typography": {
+      "primary_font": "Poppins",
+      "font_weights": [400, 500, 600, 700, 800]
+    }
+  },
+  "social_media": [
+    "LinkedIn",
+    "Instagram",
+    "Twitter",
+    "Facebook"
+  ],
+  "core_values": [
+    "Excellence",
+    "Trust",
+    "Vision"
+  ]
+}
