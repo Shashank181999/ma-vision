@@ -1,12 +1,16 @@
 "use client";
 
+import { useEffect } from "react";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
-import About from "@/components/About";
+import AboutPreview from "@/components/AboutPreview";
+import DrivenByVision from "@/components/DrivenByVision";
 import Leadership from "@/components/Leadership";
 import Expertise from "@/components/Expertise";
 import Services from "@/components/Services";
+import Stride from "@/components/Stride";
 import Projects from "@/components/Projects";
+import BusinessInquiries from "@/components/BusinessInquiries";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
@@ -21,6 +25,15 @@ const HeroPremium = dynamic(() => import("@/components/HeroPremium"), {
 });
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+  }, []);
+
   return (
     <>
       <PageLoader />
@@ -30,11 +43,14 @@ export default function Home() {
         <section id="home">
           <HeroPremium />
         </section>
-        <About />
+        <AboutPreview />
         <Leadership />
         <Expertise />
+        <Stride />
         <Services />
         <Projects />
+        <DrivenByVision />
+        <BusinessInquiries />
         <Contact />
       </main>
       <Footer />

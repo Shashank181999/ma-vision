@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import BootstrapClient from "@/components/BootstrapClient";
+import ChatBot from "@/components/ChatBot";
 
 export const metadata: Metadata = {
   title: "MA Vision | Building Dreams Into Reality",
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body>
         {children}
         <BootstrapClient />
+        <ChatBot />
       </body>
     </html>
   );

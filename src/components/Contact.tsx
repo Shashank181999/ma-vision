@@ -33,18 +33,33 @@ export default function Contact() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Title animation
       gsap.from(".contact-title", {
         scrollTrigger: {
           trigger: ".contact-title",
-          start: "top 80%",
+          start: "top 85%",
           toggleActions: "play none none reverse",
         },
         opacity: 0,
-        y: 50,
+        y: 60,
         duration: 1,
         ease: "power3.out",
       });
 
+      gsap.from(".section-subtitle", {
+        scrollTrigger: {
+          trigger: ".contact-title",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        delay: 0.2,
+        ease: "power3.out",
+      });
+
+      // Form animation
       if (formRef.current) {
         gsap.from(formRef.current, {
           scrollTrigger: {
@@ -53,23 +68,45 @@ export default function Contact() {
             toggleActions: "play none none reverse",
           },
           opacity: 0,
-          x: -50,
+          x: -80,
+          scale: 0.95,
           duration: 1,
+          ease: "power3.out",
+        });
+
+        // Form fields stagger
+        const formGroups = formRef.current.querySelectorAll(".form-group");
+        gsap.from(formGroups, {
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+          },
+          opacity: 0,
+          y: 30,
+          duration: 0.6,
+          stagger: 0.1,
+          delay: 0.3,
           ease: "power3.out",
         });
       }
 
-      gsap.from(".contact-right", {
+
+      // Map animation
+      gsap.from(".contact-map", {
         scrollTrigger: {
-          trigger: ".contact-right",
-          start: "top 85%",
+          trigger: ".contact-map",
+          start: "top 90%",
           toggleActions: "play none none reverse",
         },
         opacity: 0,
-        x: 50,
-        duration: 1,
+        scale: 0.9,
+        duration: 0.8,
+        delay: 0.2,
         ease: "power3.out",
       });
+
+
     }, sectionRef);
 
     return () => ctx.revert();

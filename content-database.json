@@ -8,9 +8,64 @@
     "website": "mavdevelopments.com"
   },
   "about": {
-    "main_description": "MA VISION Developments is one of the UAE's leading homegrown professional development firms, built on a foundation of excellence, trust, and vision.",
-    "secondary_description": "We specialize in transformative projects that shape communities and elevate urban living across the Emirates.",
-    "mission": "From concept to completion, we serve as a trusted partner offering deep sector expertise and end-to-end support for high-impact developments."
+    "headline": "Building Opportunities, Strengthening Communities",
+    "main_description": "MA VISION Developments takes pride in being one of the few homegrown professional development firms in the UAE, established in accordance with national regulations and built on a foundation of excellence, trust, and vision.",
+    "secondary_description": "We specialize in project development, project management, cost consultancy, and strategic advisory services, supporting transformative projects that shape communities and elevate urban living.",
+    "growth": "Since our inception, MA VISION has demonstrated consistent and remarkable growth—reflected not only in our financial success, but in our expanding client base, diverse portfolio of high-impact projects, and the strength of our expert team.",
+    "vip_services": "We work closely with VIP clients to develop, scale, and position their projects for long-term success, helping them navigate rapid industry change and capitalize on emerging opportunities.",
+    "global_reach": "Through our international network and strategic joint ventures, we provide clients with the tools, insight, and resources needed to market and monetize mega developments. From concept to completion, we serve as a trusted partner and strategic advisor, offering deep sector expertise and end-to-end support.",
+    "closing": "At MA VISION Developments, we're not just building structures—we're building opportunities, strengthening communities, and shaping the future of the UAE's urban landscape.",
+    "values_detailed": [
+      {
+        "title": "Excellence",
+        "description": "Uncompromising quality in every detail, from concept to completion",
+        "icon": "diamond"
+      },
+      {
+        "title": "Trust",
+        "description": "Building lasting relationships through transparency and reliability",
+        "icon": "shield"
+      },
+      {
+        "title": "Vision",
+        "description": "Forward-thinking approach that anticipates market trends and client needs",
+        "icon": "eye"
+      },
+      {
+        "title": "Innovation",
+        "description": "Embracing cutting-edge technologies and sustainable building practices",
+        "icon": "lightbulb"
+      }
+    ],
+    "milestones": [
+      {
+        "year": "2001",
+        "title": "Foundation",
+        "description": "MA Vision Developments established in Dubai"
+      },
+      {
+        "year": "2008",
+        "title": "AED 1B Milestone",
+        "description": "Reached first billion in development value"
+      },
+      {
+        "year": "2015",
+        "title": "Expansion",
+        "description": "Extended operations across all Emirates"
+      },
+      {
+        "year": "2024",
+        "title": "AED 5B+",
+        "description": "Total development value delivered to date"
+      }
+    ],
+    "differentiators": [
+      "End-to-end project lifecycle management",
+      "In-house architectural and engineering expertise",
+      "Strong relationships with regulatory authorities",
+      "Proven track record with institutional investors",
+      "Commitment to sustainable development practices"
+    ]
   },
   "statistics": {
     "development_value": "AED 5B+",
@@ -117,9 +172,11 @@
     }
   ],
   "contact": {
-    "location": "Dubai, United Arab Emirates",
-    "email": "info@mavision.ae",
-    "phone": "+971 4 XXX XXXX",
+    "location": "P.O. Box 450302, Dubai, UAE",
+    "email": "info@mavdevelopments.com",
+    "phone": "+971 58 866 5301",
+    "whatsapp": "+971588665301",
+    "website": "https://mavdevelopments.com",
     "working_hours": "Sun - Thu: 9:00 AM - 6:00 PM"
   },
   "branding": {
@@ -136,12 +193,13 @@
       "font_weights": [400, 500, 600, 700, 800]
     }
   },
-  "social_media": [
-    "LinkedIn",
-    "Instagram",
-    "Twitter",
-    "Facebook"
-  ],
+  "social_media": {
+    "facebook": "https://www.facebook.com/mavdevelopments",
+    "instagram": "https://www.instagram.com/mavdevelopments",
+    "youtube": "https://www.youtube.com/@mavisiondevelopments",
+    "whatsapp": "https://api.whatsapp.com/send/?phone=971588665301&text&type=phone_number&app_absent=0",
+    "linkedin": "https://www.linkedin.com/company/mavdevelopments"
+  },
   "core_values": [
     "Excellence",
     "Trust",

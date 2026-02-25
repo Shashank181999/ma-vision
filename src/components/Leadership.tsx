@@ -12,34 +12,90 @@ export default function Leadership() {
   const { leadership, statistics } = data;
   const leader = leadership[0];
 
-  const getInitials = (name: string) => {
-    return name.split(' ').map(n => n[0]).join('');
-  };
-
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".leadership-left", {
+      // Image wrapper animation
+      gsap.from(".leader-image-wrapper", {
         scrollTrigger: {
-          trigger: ".leadership-left",
+          trigger: ".leadership-v2-grid",
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
         opacity: 0,
-        x: -50,
-        duration: 0.8,
+        x: -100,
+        scale: 0.95,
+        duration: 1.2,
         ease: "power3.out",
       });
 
-      gsap.from(".leader-card-new", {
+      // Badge pop in
+      gsap.from(".leader-exp-badge", {
         scrollTrigger: {
-          trigger: ".leader-card-new",
+          trigger: ".leader-image-wrapper",
+          start: "top 70%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        scale: 0.5,
+        duration: 0.8,
+        delay: 0.6,
+        ease: "back.out(1.7)",
+      });
+
+      // Quick stats slide up
+      gsap.from(".quick-stat", {
+        scrollTrigger: {
+          trigger: ".leader-quick-stats",
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: "power3.out",
+      });
+
+      // Content side stagger
+      const contentElements = gsap.utils.toArray(".leader-content-side > *");
+      gsap.from(contentElements, {
+        scrollTrigger: {
+          trigger: ".leader-content-side",
           start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 60,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+      });
+
+      // Credentials items
+      gsap.from(".cred-item", {
+        scrollTrigger: {
+          trigger: ".leader-credentials",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        x: -30,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power3.out",
+      });
+
+      // Achievement slide in
+      gsap.from(".leader-achievement", {
+        scrollTrigger: {
+          trigger: ".leader-achievement",
+          start: "top 90%",
           toggleActions: "play none none reverse",
         },
         opacity: 0,
         x: 50,
         duration: 0.8,
-        delay: 0.2,
         ease: "power3.out",
       });
 
@@ -49,57 +105,88 @@ export default function Leadership() {
   }, []);
 
   return (
-    <section className="leadership-new" id="leadership" ref={sectionRef}>
+    <section className="leadership-v2" id="leadership" ref={sectionRef}>
       <div className="container">
-        <div className="leadership-wrapper">
-          <div className="leadership-left">
-            <span className="leadership-tag">LEADERSHIP</span>
-            <h2 className="leadership-title">
-              Guided by<br />
-              <span>Experience</span><br />
-              & Vision
-            </h2>
+        <div className="leadership-v2-grid">
+          {/* Image Side */}
+          <div className="leader-image-side">
+            <div className="leader-image-wrapper">
+              <img
+                src="/experience.d1be152f64d97a42f231.jpg"
+                alt={leader.name}
+                className="leader-photo"
+              />
+              <div className="leader-image-overlay"></div>
 
-            <p className="leadership-bio">
-              {leader.bio}
-            </p>
-
-            <div className="leadership-stats-row">
-              <div className="leadership-stat">
-                <span className="stat-number">{statistics.development_value}</span>
-                <span className="stat-text">DEVELOPMENT<br />VALUE</span>
+              {/* Experience Badge */}
+              <div className="leader-exp-badge">
+                <span className="exp-since">Since</span>
+                <span className="exp-year">{leader.since}</span>
               </div>
-              <div className="leadership-stat">
-                <span className="stat-number">{leader.experience_years}</span>
-                <span className="stat-text">YEARS<br />EXPERIENCE</span>
+            </div>
+
+            {/* Stats under image */}
+            <div className="leader-quick-stats">
+              <div className="quick-stat">
+                <span className="qs-number">{statistics.development_value}</span>
+                <span className="qs-label">Portfolio Value</span>
+              </div>
+              <div className="quick-stat">
+                <span className="qs-number">{leader.experience_years}</span>
+                <span className="qs-label">Years Leading</span>
               </div>
             </div>
           </div>
 
-          <div className="leadership-right">
-            <div className="leader-card-new">
-              <div className="leader-company-logo">
-                <img src="/MA_VISION_02-removebg-preview.png" alt="MA Vision" />
-              </div>
-              <div className="leader-avatar-new">
-                <span>{getInitials(leader.name)}</span>
-              </div>
-              <h3 className="leader-name-new">{leader.name}</h3>
-              <p className="leader-title-new">{leader.title.toUpperCase()}</p>
-              <div className="leader-badges">
-                {leader.education.map((edu, index) => (
-                  <span key={index} className="leader-badge">{edu}</span>
-                ))}
-              </div>
+          {/* Content Side */}
+          <div className="leader-content-side">
+            <div className="leader-label">
+              <span className="label-line"></span>
+              <span>Leadership</span>
+            </div>
 
-              {/* Achievements */}
-              <div className="leader-achievements">
-                {leader.achievements.map((achievement, index) => (
-                  <div key={index} className="achievement-item">
-                    <span className="achievement-icon">★</span>
-                    <span className="achievement-text">{achievement}</span>
-                  </div>
-                ))}
+            <h2 className="leader-headline">
+              Guided by <span>Experience</span> & Vision
+            </h2>
+
+            <div className="leader-info">
+              <h3 className="leader-name">{leader.name}</h3>
+              <p className="leader-position">{leader.title}</p>
+            </div>
+
+            <p className="leader-bio">
+              At the forefront of our leadership is Marwa, a seasoned expert and pioneer in the UAE&apos;s property development sector since 2001. Her experience spans the full project lifecycle—from site selection and feasibility analysis to financial modeling, acquisition, master planning, design management, and tendering. Over her career, she has led and coordinated developments with a combined value exceeding AED 5 billion.
+            </p>
+
+            {/* Credentials */}
+            <div className="leader-credentials">
+              <span className="cred-title">Credentials</span>
+              <div className="cred-list">
+                <div className="cred-item">
+                  <span className="cred-dot"></span>
+                  <span>Degree in Architectural Engineering</span>
+                </div>
+                <div className="cred-item">
+                  <span className="cred-dot"></span>
+                  <span>Certified PMP</span>
+                </div>
+                <div className="cred-item">
+                  <span className="cred-dot"></span>
+                  <span>Master&apos;s in Project Management from the American Academy, U.S.A.</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Achievement */}
+            <div className="leader-achievement">
+              <div className="achievement-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                </svg>
+              </div>
+              <div className="achievement-content">
+                <span className="achievement-label">Key Achievement</span>
+                <span className="achievement-value">Led developments exceeding AED 5B+ combined value</span>
               </div>
             </div>
           </div>

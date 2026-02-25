@@ -1,15 +1,17 @@
 "use client";
 
+import { FaFacebookF, FaInstagram, FaYoutube, FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
 import data from "../../content-database.json";
 
 export default function Footer() {
   const { company, contact, services, social_media } = data;
 
-  const socialIcons: Record<string, string> = {
-    "LinkedIn": "in",
-    "Instagram": "IG",
-    "Twitter": "𝕏",
-    "Facebook": "f",
+  const socialIcons: Record<string, React.ReactNode> = {
+    "linkedin": <FaLinkedinIn />,
+    "instagram": <FaInstagram />,
+    "facebook": <FaFacebookF />,
+    "youtube": <FaYoutube />,
+    "whatsapp": <FaWhatsapp />,
   };
 
   return (
@@ -33,14 +35,16 @@ export default function Footer() {
               </a>
             </div>
             <div className="social-links">
-              {social_media.map((platform) => (
+              {Object.entries(social_media).map(([platform, url]) => (
                 <a
                   key={platform}
-                  href="#"
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="social-link"
                   aria-label={platform}
                 >
-                  {socialIcons[platform] || platform[0]}
+                  {socialIcons[platform]}
                 </a>
               ))}
             </div>
