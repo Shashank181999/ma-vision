@@ -86,14 +86,8 @@ export default function HeroPremium() {
       }, containerRef);
     };
 
-    // Check if loader already completed (returning visitor)
-    const hasLoaded = sessionStorage.getItem("mavision_loaded");
-    if (hasLoaded) {
-      startAnimations();
-    } else {
-      // Wait for loader to complete
-      window.addEventListener('loaderComplete', startAnimations);
-    }
+    // Always wait for loader to complete before starting animations
+    window.addEventListener('loaderComplete', startAnimations);
 
     return () => {
       window.removeEventListener('loaderComplete', startAnimations);
