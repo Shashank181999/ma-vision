@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "../../content-database.json";
@@ -10,6 +10,8 @@ gsap.registerPlugin(ScrollTrigger);
 export default function HeroPremium() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { statistics } = data;
+  const [isReady, setIsReady] = useState(false);
+  const animationStarted = useRef(false);
 
   // Handle anchor link clicks with smooth scrolling
   const handleAnchorClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -22,35 +24,81 @@ export default function HeroPremium() {
   }, []);
 
   useEffect(() => {
-    // Detect mobile device
     const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
+    let ctx: gsap.Context;
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ delay: 0.5 });
+    const startAnimations = () => {
+      if (animationStarted.current) return;
+      animationStarted.current = true;
+      setIsReady(true);
 
-      tl.from(".hero-left-content", { opacity: 0, x: -60, duration: 1, ease: "power3.out" });
-      tl.from(".hero-tagline", { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" }, "-=0.6");
-      tl.from(".hero-title span", { opacity: 0, y: 40, duration: 0.8, stagger: 0.1, ease: "power3.out" }, "-=0.4");
-      tl.from(".hero-text", { opacity: 0, y: 20, duration: 0.6, ease: "power3.out" }, "-=0.4");
-      tl.from(".hero-buttons a", { opacity: 0, y: 20, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.3");
-      tl.from(".hero-stat-box", { opacity: 0, y: 30, duration: 0.6, stagger: 0.15, ease: "power3.out" }, "-=0.3");
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({ delay: 0.1 });
 
-      // Only apply scroll parallax effects on desktop
-      if (!isMobile) {
-        ScrollTrigger.create({
-          trigger: containerRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-          onUpdate: (self) => {
-            gsap.to(".hero-video", { scale: 1 + self.progress * 0.08 });
-            gsap.to(".hero-left-content", { y: self.progress * -60, opacity: 1 - self.progress * 1.3 });
-          },
-        });
-      }
-    }, containerRef);
+        tl.fromTo(".hero-left-content",
+          { opacity: 0, x: -60 },
+          { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
+        );
+        tl.fromTo(".hero-tagline",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+          "-=0.6"
+        );
+        tl.fromTo(".hero-title span",
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" },
+          "-=0.4"
+        );
+        tl.fromTo(".hero-text",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
+          "-=0.4"
+        );
+        tl.fromTo(".hero-buttons a",
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" },
+          "-=0.3"
+        );
+        tl.fromTo(".hero-stat-box",
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
+          "-=0.3"
+        );
+        tl.fromTo(".hero-scroll-down",
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5 },
+          "-=0.3"
+        );
 
-    return () => ctx.revert();
+        // Only apply scroll parallax effects on desktop
+        if (!isMobile) {
+          ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1,
+            onUpdate: (self) => {
+              gsap.to(".hero-video", { scale: 1 + self.progress * 0.08 });
+              gsap.to(".hero-left-content", { y: self.progress * -60, opacity: 1 - self.progress * 1.3 });
+            },
+          });
+        }
+      }, containerRef);
+    };
+
+    // Check if loader already completed (returning visitor)
+    const hasLoaded = sessionStorage.getItem("mavision_loaded");
+    if (hasLoaded) {
+      startAnimations();
+    } else {
+      // Wait for loader to complete
+      window.addEventListener('loaderComplete', startAnimations);
+    }
+
+    return () => {
+      window.removeEventListener('loaderComplete', startAnimations);
+      if (ctx) ctx.revert();
+    };
   }, []);
 
   return (
@@ -74,7 +122,7 @@ export default function HeroPremium() {
       <div className="hero-overlay-bottom"></div>
 
       {/* Left Content */}
-      <div className="hero-left-content">
+      <div className="hero-left-content" style={{ opacity: isReady ? undefined : 0, visibility: isReady ? 'visible' : 'hidden' }}>
         <div className="hero-tagline">
           <span className="tagline-icon">◆</span>
           <span>Premium Real Estate Development</span>
@@ -127,7 +175,7 @@ export default function HeroPremium() {
       </div>
 
       {/* Scroll Down */}
-      <div className="hero-scroll-down">
+      <div className="hero-scroll-down" style={{ opacity: isReady ? undefined : 0 }}>
         <span>Scroll</span>
         <div className="scroll-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

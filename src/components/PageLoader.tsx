@@ -3,26 +3,38 @@
 import { useEffect, useState } from "react";
 
 export default function PageLoader() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  // Check sessionStorage synchronously to determine initial state
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem("mavision_loaded");
+    }
+    return true;
+  });
+  const [isVisible, setIsVisible] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return !sessionStorage.getItem("mavision_loaded");
+    }
+    return true;
+  });
 
   useEffect(() => {
-    // Check if loader has been shown before
     const hasLoaded = sessionStorage.getItem("mavision_loaded");
 
     if (!hasLoaded) {
-      setIsLoading(true);
-      setIsVisible(true);
-
       const timer = setTimeout(() => {
         setIsVisible(false);
         setTimeout(() => {
           setIsLoading(false);
           sessionStorage.setItem("mavision_loaded", "true");
+          // Dispatch event to notify other components loader is done
+          window.dispatchEvent(new CustomEvent('loaderComplete'));
         }, 500);
       }, 2200);
 
       return () => clearTimeout(timer);
+    } else {
+      // Already loaded before, dispatch event immediately
+      window.dispatchEvent(new CustomEvent('loaderComplete'));
     }
   }, []);
 
