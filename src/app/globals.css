@@ -3106,21 +3106,10 @@ body {
   max-width: 650px;
   opacity: 0;
   visibility: hidden;
-  transform: translateX(-60px);
 }
 
 .hero-left-content.ready {
   visibility: visible;
-}
-
-/* Initial hidden states for hero children - GSAP will animate these */
-.hero-tagline,
-.hero-title span,
-.hero-text,
-.hero-buttons a,
-.hero-stat-box {
-  opacity: 0;
-  transform: translateY(20px);
 }
 
 .hero-scroll-down {
@@ -9758,13 +9747,18 @@ body {
   }
 
   .leader-exp-badge {
-    top: 20px;
-    right: 20px;
-    padding: 12px 15px;
+    top: 15px;
+    right: auto;
+    left: 15px;
+    padding: 10px 14px;
+  }
+
+  .leader-exp-badge .exp-since {
+    font-size: 0.55rem;
   }
 
   .leader-exp-badge .exp-year {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
 
   .leader-quick-stats {

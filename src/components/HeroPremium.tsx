@@ -37,16 +37,18 @@ export default function HeroPremium() {
       scrollRef.current?.classList.add('ready');
 
       ctx = gsap.context(() => {
-        const tl = gsap.timeline({ delay: 0.1 });
-
-        // Animate from current state (opacity 0 from CSS) to visible
-        tl.to(".hero-left-content", { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" });
-        tl.to(".hero-tagline", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.5");
-        tl.to(".hero-title span", { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" }, "-=0.3");
-        tl.to(".hero-text", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
-        tl.to(".hero-buttons a", { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "back.out(1.7)" }, "-=0.2");
-        tl.to(".hero-stat-box", { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power3.out" }, "-=0.2");
-        tl.to(".hero-scroll-down", { opacity: 1, duration: 0.4 }, "-=0.2");
+        // Simple smooth fade in for all hero content
+        gsap.to(".hero-left-content", {
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out"
+        });
+        gsap.to(".hero-scroll-down", {
+          opacity: 1,
+          duration: 1,
+          delay: 0.3,
+          ease: "power2.out"
+        });
 
         // Only apply scroll parallax effects on desktop
         if (!isMobile) {
