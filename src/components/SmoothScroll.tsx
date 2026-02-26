@@ -8,7 +8,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScroll() {
   useEffect(() => {
-    // Parallax scrolling for sections
+    // Skip parallax effects on mobile devices for better performance
+    const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
+
+    if (isMobile) {
+      // On mobile, just ensure ScrollTrigger is initialized but don't add parallax
+      return;
+    }
+
+    // Parallax scrolling for sections (desktop only)
     const sections = document.querySelectorAll("section");
 
     sections.forEach((section) => {
@@ -25,7 +33,12 @@ export default function SmoothScroll() {
 
     // Refresh ScrollTrigger on resize
     const handleResize = () => {
-      ScrollTrigger.refresh();
+      const nowMobile = window.innerWidth <= 768;
+      if (nowMobile) {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      } else {
+        ScrollTrigger.refresh();
+      }
     };
 
     window.addEventListener("resize", handleResize);

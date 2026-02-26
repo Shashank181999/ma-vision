@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "../../content-database.json";
@@ -9,9 +9,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroPremium() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { statistics, company } = data;
+  const { statistics } = data;
+
+  // Handle anchor link clicks with smooth scrolling
+  const handleAnchorClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
 
   useEffect(() => {
+    // Detect mobile device
+    const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ delay: 0.5 });
 
@@ -22,16 +35,19 @@ export default function HeroPremium() {
       tl.from(".hero-buttons a", { opacity: 0, y: 20, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" }, "-=0.3");
       tl.from(".hero-stat-box", { opacity: 0, y: 30, duration: 0.6, stagger: 0.15, ease: "power3.out" }, "-=0.3");
 
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1,
-        onUpdate: (self) => {
-          gsap.to(".hero-video", { scale: 1 + self.progress * 0.08 });
-          gsap.to(".hero-left-content", { y: self.progress * -60, opacity: 1 - self.progress * 1.3 });
-        },
-      });
+      // Only apply scroll parallax effects on desktop
+      if (!isMobile) {
+        ScrollTrigger.create({
+          trigger: containerRef.current,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+          onUpdate: (self) => {
+            gsap.to(".hero-video", { scale: 1 + self.progress * 0.08 });
+            gsap.to(".hero-left-content", { y: self.progress * -60, opacity: 1 - self.progress * 1.3 });
+          },
+        });
+      }
     }, containerRef);
 
     return () => ctx.revert();
@@ -75,13 +91,21 @@ export default function HeroPremium() {
         </p>
 
         <div className="hero-buttons">
-          <a href="#projects" className="btn-primary-hero">
+          <a
+            href="#projects"
+            className="btn-primary-hero"
+            onClick={(e) => handleAnchorClick(e, 'projects')}
+          >
             <span>View Projects</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12H19M19 12L12 5M19 12L12 19" />
             </svg>
           </a>
-          <a href="#contact" className="btn-outline-hero">
+          <a
+            href="#contact"
+            className="btn-outline-hero"
+            onClick={(e) => handleAnchorClick(e, 'contact')}
+          >
             Contact Us
           </a>
         </div>

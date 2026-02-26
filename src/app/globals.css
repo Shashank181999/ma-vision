@@ -39,6 +39,44 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Mobile Touch & Scroll Optimizations */
+@media (max-width: 768px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: none;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  section {
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  .hero-section-v2 {
+    touch-action: pan-y;
+  }
+
+  .hero-video {
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  .hero-left-content {
+    transform: none !important;
+    opacity: 1 !important;
+    will-change: auto !important;
+  }
+
+  .parallax-container,
+  .parallax-image {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
