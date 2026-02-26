@@ -3104,6 +3104,31 @@ body {
   z-index: 2;
   padding: 120px 80px;
   max-width: 650px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-60px);
+}
+
+.hero-left-content.ready {
+  visibility: visible;
+}
+
+/* Initial hidden states for hero children - GSAP will animate these */
+.hero-tagline,
+.hero-title span,
+.hero-text,
+.hero-buttons a,
+.hero-stat-box {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-scroll-down {
+  opacity: 0;
+}
+
+.hero-scroll-down.ready {
+  /* visibility controlled by GSAP */
 }
 
 /* Tagline */
@@ -11257,37 +11282,19 @@ body {
   }
 
   .hero-stats-row {
-    position: absolute;
-    top: 100px;
-    right: 15px;
     flex-direction: column;
-    gap: 8px;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(10px);
-    padding: 12px;
-    border-radius: 10px;
-    z-index: 10;
+    gap: 15px;
   }
 
   .hero-stat-box {
     flex: none;
-    width: auto;
-    padding: 5px 0;
-    border-bottom: none;
-    text-align: right;
+    width: 100%;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .hero-stat-box:last-child {
     border-bottom: none;
-  }
-
-  .hero-stat-box .stat-num {
-    font-size: 1.1rem;
-    margin-bottom: 2px;
-  }
-
-  .hero-stat-box .stat-txt {
-    font-size: 0.55rem;
   }
 
   .section-title {

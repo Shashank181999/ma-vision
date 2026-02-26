@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback, useState } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import data from "../../content-database.json";
@@ -9,8 +9,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function HeroPremium() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const { statistics } = data;
-  const [isReady, setIsReady] = useState(false);
   const animationStarted = useRef(false);
 
   // Handle anchor link clicks with smooth scrolling
@@ -30,45 +31,22 @@ export default function HeroPremium() {
     const startAnimations = () => {
       if (animationStarted.current) return;
       animationStarted.current = true;
-      setIsReady(true);
+
+      // Add ready class to make elements visible
+      contentRef.current?.classList.add('ready');
+      scrollRef.current?.classList.add('ready');
 
       ctx = gsap.context(() => {
         const tl = gsap.timeline({ delay: 0.1 });
 
-        tl.fromTo(".hero-left-content",
-          { opacity: 0, x: -60 },
-          { opacity: 1, x: 0, duration: 1, ease: "power3.out" }
-        );
-        tl.fromTo(".hero-tagline",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-          "-=0.6"
-        );
-        tl.fromTo(".hero-title span",
-          { opacity: 0, y: 40 },
-          { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" },
-          "-=0.4"
-        );
-        tl.fromTo(".hero-text",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-          "-=0.4"
-        );
-        tl.fromTo(".hero-buttons a",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "back.out(1.7)" },
-          "-=0.3"
-        );
-        tl.fromTo(".hero-stat-box",
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
-          "-=0.3"
-        );
-        tl.fromTo(".hero-scroll-down",
-          { opacity: 0 },
-          { opacity: 1, duration: 0.5 },
-          "-=0.3"
-        );
+        // Animate from current state (opacity 0 from CSS) to visible
+        tl.to(".hero-left-content", { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" });
+        tl.to(".hero-tagline", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.5");
+        tl.to(".hero-title span", { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power3.out" }, "-=0.3");
+        tl.to(".hero-text", { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.3");
+        tl.to(".hero-buttons a", { opacity: 1, y: 0, duration: 0.4, stagger: 0.08, ease: "back.out(1.7)" }, "-=0.2");
+        tl.to(".hero-stat-box", { opacity: 1, y: 0, duration: 0.5, stagger: 0.1, ease: "power3.out" }, "-=0.2");
+        tl.to(".hero-scroll-down", { opacity: 1, duration: 0.4 }, "-=0.2");
 
         // Only apply scroll parallax effects on desktop
         if (!isMobile) {
@@ -116,7 +94,7 @@ export default function HeroPremium() {
       <div className="hero-overlay-bottom"></div>
 
       {/* Left Content */}
-      <div className="hero-left-content" style={{ opacity: isReady ? undefined : 0, visibility: isReady ? 'visible' : 'hidden' }}>
+      <div ref={contentRef} className="hero-left-content">
         <div className="hero-tagline">
           <span className="tagline-icon">◆</span>
           <span>Premium Real Estate Development</span>
@@ -169,7 +147,7 @@ export default function HeroPremium() {
       </div>
 
       {/* Scroll Down */}
-      <div className="hero-scroll-down" style={{ opacity: isReady ? undefined : 0 }}>
+      <div ref={scrollRef} className="hero-scroll-down">
         <span>Scroll</span>
         <div className="scroll-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
